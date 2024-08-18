@@ -2,9 +2,11 @@
 
 OPM (Oracle Package Manager) is a package manager designed for Oracle database applications. Its primary functions include:
 
-  * ***Packaging:*** Standardizing the format of any SQL or PL/SQL application.
-  * ***Deployment:*** Installing, uninstalling, and updating packages efficiently.
-  * ***Distribution:*** Publishing packages to a shared registry (local or remote) for centralized management.
+ * ***Packaging:*** Standardizing the format of any SQL or PL/SQL application.
+ * ***Installation:*** Deploying packages to a target environment.
+ * ***Uninstallation***: Removing packages from a target environment.
+ * ***Updating:*** Modifying existing packages in a target environment.
+ * ***Distribution:*** Publishing packages to a shared registry (local or remote) for centralized management.
 
 # Understanding the Core Concepts
 
