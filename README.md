@@ -31,7 +31,7 @@ It's crucial to narrow down the focus of the package manager. Consider these que
 
 Once we have a clear scope, we can start building the core components:
 
-- ***Package format:*** we will create our custim package format ***.opm***
+- ***Package format:*** we will create our custom package format ***.opm***
 - ***Repository:*** We will start by just a local repository called ***.opm*** that will be created in the end user local machine.
 - ***Metadata:*** We will store the package metadata in a json format in a file called ***panguan.json***.
 - ***Dependency resolution:*** Implement algorithms to handle dependencies and conflicts. This can be challenging and requires careful consideration.
@@ -51,4 +51,19 @@ Once we have a clear scope, we can start building the core components:
 
 # Getting start
 
-To get start, I'll try to start building a MVP to be considered as POC.
+## Basic features
+
+To get started, I'll try to build a MVP that can be considered a POC.
+
+This POC will contains 4 basic commands:
+  * ***opm install**: to install the dependencies
+  * ***opm uninstall**: to uninstall the dependencies
+  * ***opm update**: to update the dependencies
+  * ***opm publish**: to publish the dependencies
+
+We will also cover project publishing in V1. To achieve this, every project must follow a specific format that will be defined later.
+
+## CLI
+
+To interact with OPM, we will offer users a CLI. This CLI will be developed in this POC using Node.js.
+
