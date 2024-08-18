@@ -113,4 +113,10 @@ An example of ***panguan.json*** file:
     }
 }
 ```
+## Commands details
+### OPM INSTALL
+
+The main functionality of the install command is to grab dependencies from the panguan.json file and install them in the project (target database). The installation process will be simply by calling an install script after connecting to the target database.
+
+QQ: Should we install the dependencies in a separate schema?
 
