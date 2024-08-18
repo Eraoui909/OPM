@@ -43,4 +43,6 @@ Once you have a clear scope, you can start building the core components:
 
 
 
-Community: Foster a community around your package manager to encourage contributions and feedback.
+# Getting start
+
+To get start, I'll try to start building a MVP to be considered as POC.
