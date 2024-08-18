@@ -67,3 +67,50 @@ We will also cover project publishing in V1. To achieve this, every project must
 
 To interact with OPM, we will offer users a CLI. This CLI will be developed in this POC using Node.js.
 
+## Example
+
+This is how a project will look like
+
+```
+├── README.md
+├── .gitignore
+├── panguan.json
+└── .opm
+    ├── dependency1
+    ├── dependency2
+    └── dependency3
+└── src
+    └── database
+        ├── hr
+        │   ├── create_users
+        │   ├── indexes
+        │   ├── procedures
+        │   ├── ref_constraints
+        │   ├── sequences
+        │   ├── tables
+        │   ├── triggers
+        │   ├── type_specs
+        │   └── views
+        └── sys
+            └── object_grants
+
+```
+An example of ***panguan.json*** file:
+```
+{
+    "name": "project-name",
+    "version": "1.0.0",
+    "description": "The description of your project",
+    "author": "Author",
+    "license": "license",
+    "repository": {
+      "type": "git",
+      "url": "The repo url"
+    },
+    "dependencies": {
+      "dependecy1": "^11.1.0",
+      "dependecy2": "^4.1.0"
+    }
+}
+```
+
