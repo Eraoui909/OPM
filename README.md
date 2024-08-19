@@ -65,6 +65,166 @@ By default, the OPM will include two default schemas and will grant the necessar
 
 TBD
 
+## DATA Model
+
+<img width="951" alt="erd" src="https://github.com/user-attachments/assets/729d6dd6-8e96-4c4f-86e0-4df7f4cfd16b">
+
+# Database Schema
+
+## Public Tables
+
+### `accounts`
+| Column         | Type      | Notes       |
+| -------------- | --------- | ----------- |
+| `id`           | `UUID`    | Primary Key |
+| `handle`       | `TEXT`    |             |
+| `avatar_path`  | `TEXT`    |             |
+| `display_name` | `TEXT`    |             |
+| `bio`          | `TEXT`    |             |
+| `contact_email`| `TEXT`    |             |
+| `created_at`   | `TIMESTAMP` |             |
+
+### `organizations`
+| Column         | Type      | Notes       |
+| -------------- | --------- | ----------- |
+| `id`           | `UUID`    | Primary Key |
+| `handle`       | `TEXT`    |             |
+| `avatar_path`  | `TEXT`    |             |
+| `display_name` | `TEXT`    |             |
+| `bio`          | `TEXT`    |             |
+| `contact_email`| `TEXT`    |             |
+| `created_at`   | `TIMESTAMP` |             |
+
+### `members`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `organization_id` | `UUID`    |             |
+| `account_id`      | `UUID`    |             |
+| `role`            | `TEXT`    |             |
+| `created_at`      | `TIMESTAMP` | Primary Key: `(organization_id, account_id)` |
+
+### `packages`
+| Column             | Type      | Notes       |
+| ------------------ | --------- | ----------- |
+| `package_name`     | `TEXT`    | Primary Key |
+| `handle`           | `TEXT`    |             |
+| `partial_name`     | `TEXT`    |             |
+| `latest_version`   | `TEXT`    |             |
+| `description_md`   | `TEXT`    |             |
+| `control_description` | `TEXT`    |             |
+| `control_requires` | `TEXT`    |             |
+| `created_at`       | `TIMESTAMP` |             |
+
+### `package_upgrades`
+| Column           | Type      | Notes       |
+| ---------------- | --------- | ----------- |
+| `id`             | `UUID`    | Primary Key |
+| `package_id`     | `UUID`    |             |
+| `package_name`   | `TEXT`    |             |
+| `from_version`   | `TEXT`    |             |
+| `to_version`     | `TEXT`    |             |
+| `sql`            | `TEXT`    |             |
+| `created_at`     | `TIMESTAMP` |             |
+
+### `package_versions`
+| Column             | Type      | Notes       |
+| ------------------ | --------- | ----------- |
+| `id`               | `UUID`    | Primary Key |
+| `package_id`       | `UUID`    |             |
+| `package_name`     | `TEXT`    |             |
+| `version`          | `TEXT`    |             |
+| `sql`              | `TEXT`    |             |
+| `description_md`   | `TEXT`    |             |
+| `control_description` | `TEXT`    |             |
+| `control_requires` | `TEXT`    |             |
+| `created_at`       | `TIMESTAMP` |             |
+
+## Private Tables
+
+### `accounts`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `id`              | `UUID`    | Primary Key |
+| `handle`          | `TEXT`    |             |
+| `is_organization` | `BOOLEAN` |             |
+| `avatar_id`       | `UUID`    |             |
+| `display_name`    | `TEXT`    |             |
+| `bio`             | `TEXT`    |             |
+| `contact_email`   | `TEXT`    |             |
+| `created_at`      | `TIMESTAMP` |             |
+
+### `handle_registry`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `handle`          | `TEXT`    | Primary Key |
+| `is_organization` | `BOOLEAN` |             |
+| `created_at`      | `TIMESTAMP` |             |
+
+### `organizations`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `id`              | `UUID`    | Primary Key |
+| `is_organization` | `BOOLEAN` |             |
+| `avatar_id`       | `UUID`    |             |
+| `display_name`    | `TEXT`    |             |
+| `bio`             | `TEXT`    |             |
+| `contact_email`   | `TEXT`    |             |
+| `created_at`      | `TIMESTAMP` |             |
+
+### `members`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `id`              | `UUID`    | Primary Key |
+| `organization_id` | `UUID`    |             |
+| `account_id`      | `UUID`    |             |
+| `role`            | `TEXT`    |             |
+| `created_at`      | `TIMESTAMP` |             |
+
+### `downloads`
+| Column            | Type      | Notes       |
+| ----------------- | --------- | ----------- |
+| `id`              | `UUID`    | Primary Key |
+| `package_id`      | `UUID`    |             |
+| `ip`              | `TEXT`    |             |
+| `client_info`     | `TEXT`    |             |
+| `created_at`      | `TIMESTAMP` |             |
+
+### `packages`
+| Column             | Type      | Notes       |
+| ------------------ | --------- | ----------- |
+| `id`               | `UUID`    | Primary Key |
+| `package_name`     | `TEXT`    |             |
+| `handle`           | `TEXT`    |             |
+| `partial_name`     | `TEXT`    |             |
+| `control_description` | `TEXT`    |             |
+| `control_relocatable` | `BOOLEAN` |             |
+| `control_requires` | `TEXT`    |             |
+| `created_at`       | `TIMESTAMP` |             |
+
+### `package_upgrades`
+| Column           | Type      | Notes       |
+| ---------------- | --------- | ----------- |
+| `id`             | `UUID`    | Primary Key |
+| `package_id`     | `UUID`    |             |
+| `from_version_struct` | `JSONB` |             |
+| `from_version`   | `TEXT`    |             |
+| `to_version_struct` | `JSONB` |             |
+| `to_version`     | `TEXT`    |             |
+| `sql`            | `TEXT`    |             |
+| `created_at`     | `TIMESTAMP` |             |
+
+### `package_versions`
+| Column             | Type      | Notes       |
+| ------------------ | --------- | ----------- |
+| `id`               | `UUID`    | Primary Key |
+| `package_id`       | `UUID`    |             |
+| `version_struct`   | `JSONB`   |             |
+| `version`          | `TEXT`    |             |
+| `sql`              | `TEXT`    |             |
+| `description_md`   | `TEXT`    |             |
+| `created_at`       | `TIMESTAMP` |             |
+
+
 ## Basic features
 
 To get started, I'll try to build a MVP that can be considered a POC.
