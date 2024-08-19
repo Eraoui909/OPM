@@ -1,0 +1,25 @@
+{
+  "name": "opm",
+  "version": "1.0.0",
+  "description": "OPM (Oracle Package Manager) is a package manager designed for Oracle database applications. Its primary functions include:",
+  "bin": {
+    "opm": "./cli/cli.js"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Eraoui909/OPM.git"
+  },
+  "author": "Hamza Eraoui",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Eraoui909/OPM/issues"
+  },
+  "homepage": "https://github.com/Eraoui909/OPM#readme",
+  "dependencies": {
+    "commander": "^11.1.0"
+  }
+}
