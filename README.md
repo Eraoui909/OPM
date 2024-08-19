@@ -51,6 +51,20 @@ Once we have a clear scope, we can start building the core components:
 
 # Getting start
 
+## Architecture
+
+To ensure our package manager doesn't interfere with user applications, we'll use a multiple schemas approach to store different object types:
+
+ * ***OPM*** schema: For storing package manager-specific objects.
+ * ***DEPENDENCIES*** schema: To isolate dependencies for easy addition or removal (How tcould we access the depenedencies object from our app schema?).
+ * ***USER_SCHEMA*** schema: The user defined schema
+
+By default, the OPM will include two default schemas and will grant the necessary grants, roles, and synonyms (to be determined soon).
+
+## Grants, Roles and Synonyms
+
+TBD
+
 ## Basic features
 
 To get started, I'll try to build a MVP that can be considered a POC.
