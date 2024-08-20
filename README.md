@@ -70,7 +70,6 @@ TBD
 ![opm-data-model](https://github.com/user-attachments/assets/99e74ead-eba2-4c2c-8792-d473bd1c9658)
 
 
-
 ## Basic features
 
 To get started, I'll try to build a MVP that can be considered a POC.
@@ -139,4 +138,49 @@ An example of ***panguan.json*** file:
 The main functionality of the install command is to grab dependencies from the panguan.json file and install them in the project (target database). The installation process will be simply by calling an install script after connecting to the target database.
 
 QQ: Should we install the dependencies in a separate schema?
+
+# OPM Registry
+
+The registry is the place where you can publish packages or install them from. The plan is to support both remote and local registries. However, for our proof of concept (POC), we will start with just a local registry.
+
+The local registry will be a folder named __.opm__ that will be created on the user's local machine in the following directories:
+
+ * Windows: `C:\Users\YourUsername\.opm`
+ * Linux/macOS: `/home/YourUsername/.opm` or `/Users/YourUsername/.opm`
+   
+You can override the location by adding a new entry to the __panguan.json__ file called __registry.local__
+
+Each entry in the registry is a zipped folder identified by a package name and version, with additional metadata stored in the database. Packages are organized within a namespace, which corresponds to an organization ID (whether a person or an organization).
+
+The unique identifier for each package is a combination of organization_id|package_name|version. Attempting to upload or publish a package with the same identifier will result in an error.
+
+Before publishing to the OPM registry, the user must set up an account. A user can be either a person or an organization. The difference is that an organization can have multiple users who can publish to the same namespace (organization ID) while adhering to certain privileges (to be determined later).
+
+### How can the user create an account?
+
+A command named `opm connect --sign-up` will prompt the user for the required information to create an account. A namespace with the organization ID will then be automatically created in the registry. After that, the user can log in with their credentials whenever they want to publish a new package using `opm connect`.
+
+### Are there public vs. private packages?
+
+Yes, there will be some private packages that are protected with a password. Each time you want to install such a package, the user will be prompted to enter the password.
+
+### Example of how the registry will look:
+
+```
+└── .opm
+    └── namespace1
+        ├── package1-1.0.0.zip
+        └── package2-1.2.5.zip
+    └── oracle
+        ├── logger-2.1.0.zip
+        │   ├── indexes/
+        │   ├── procedures/
+        │   ├── ref_constraints/
+        │   ├── sequences/
+        │   ├── tables/
+        │   ├── triggers/
+        │   ├── views/
+        │   └── install.sql
+        └── analytics-3.0.0.zip
+```
 
