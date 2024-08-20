@@ -2,11 +2,11 @@
 
 OPM (Oracle Package Manager) is a package manager designed for Oracle database applications. Its primary functions include:
 
- * ***Packaging:*** Standardizing the format of any SQL or PL/SQL application.
- * ***Installation:*** Deploying packages to a target environment.
- * ***Uninstallation***: Removing packages from a target environment.
- * ***Updating:*** Modifying existing packages in a target environment.
- * ***Distribution:*** Publishing packages to a shared registry (local or remote) for centralized management.
+ * __Packaging__: Standardizing the format of any SQL or PL/SQL application.
+ * __Installation__: Deploying packages to a target environment.
+ * __Uninstallation__: Removing packages from a target environment.
+ * __Updating__: Modifying existing packages in a target environment.
+ * __Distribution__: Publishing packages to a shared registry (local or remote) for centralized management.
 
 # Understanding the Core Concepts
 
@@ -183,4 +183,26 @@ Yes, there will be some private packages that are protected with a password. Eac
         │   └── install.sql
         └── analytics-3.0.0.zip
 ```
+### Publishing a pckage workflow
+
+To publish your package, follow these steps that OPM will execute:
+
+   1. Ensure that the user has already initialized the package/project (look for the panguan.json file).
+   2. Verify that the configuration file is correctly set up.
+   3. Check if the install.sql file exists within the project and that its path matches what is defined in the panguan.json file.
+   4. Confirm that the user is logged into their account; if not, prompt them to create one.
+   5. Verify that the package does not already exist in the registry.
+   6. Insert the package metadata into the database.
+   7. Zip the package.
+   8. Upload it to the local registry under the correct namespace.
+
+### Taken into consideration
+
+We may offer a graphical interface to manage the registry. Oracle APEX is a good choice for building the interface for the registry.
+
+### Where should the OPM database objects live?
+
+The question here is about the OPM database objects. Should they be created in the end-user database or in a central database for OPM?
+
+To answer this I think we could have the f
 
