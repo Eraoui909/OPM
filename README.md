@@ -65,11 +65,6 @@ By default, the OPM will include two default schemas and will grant the necessar
 
 TBD
 
-## DATA Model
-
-![opm-data-model](https://github.com/user-attachments/assets/99e74ead-eba2-4c2c-8792-d473bd1c9658)
-
-
 ## Basic features
 
 To get started, I'll try to build a MVP that can be considered a POC.
@@ -204,5 +199,10 @@ We may offer a graphical interface to manage the registry. Oracle APEX is a good
 
 The question here is about the OPM database objects. Should they be created in the end-user database or in a central database for OPM?
 
-To answer this I think we could have the f
+The current solution is to use a central database where the registry objects will reside. This means the end user CLI will communicate with the registry via a REST API.
+
+### Registry DATA Model
+
+![opm-data-model](https://github.com/user-attachments/assets/99e74ead-eba2-4c2c-8792-d473bd1c9658)
+
 
