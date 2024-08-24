@@ -203,6 +203,6 @@ The current solution is to use a central database where the registry objects wil
 
 ### Registry DATA Model
 
-![opm-data-model](https://github.com/user-attachments/assets/99e74ead-eba2-4c2c-8792-d473bd1c9658)
+![opm-data-model](https://github.com/user-attachments/assets/f074a4ba-1651-4981-8d53-f307767dde4f)
 
 
